@@ -1,0 +1,7 @@
+C:\src\entendendoExcecoes\ByteBank\bin\Debug\ByteBank.exe.config
+C:\src\entendendoExcecoes\ByteBank\bin\Debug\ByteBank.exe
+C:\src\entendendoExcecoes\ByteBank\bin\Debug\ByteBank.pdb
+C:\src\entendendoExcecoes\ByteBank\obj\Debug\ByteBank.csprojAssemblyReference.cache
+C:\src\entendendoExcecoes\ByteBank\obj\Debug\ByteBank.csproj.CoreCompileInputs.cache
+C:\src\entendendoExcecoes\ByteBank\obj\Debug\ByteBank.exe
+C:\src\entendendoExcecoes\ByteBank\obj\Debug\ByteBank.pdb
