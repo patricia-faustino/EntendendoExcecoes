@@ -9,25 +9,12 @@ namespace ByteBank
 
         public static int TotalDeContasCriadas { get; private set; }
 
+        public int Agencia { get; }
 
-        private int _agencia;
-        public int Agencia
-        {
-            get
-            {
-                return _agencia;
-            }
-            set
-            {
-                if (value <= 0)
-                {
-                    return;
-                }
-
-                _agencia = value;
-            }
-        }
-        public int Numero { get; set; }
+        //readonly: somente leitura, não pode ser atribuido fora do construtor
+        //private readonly int _numero;
+        // por baixo dos panos ele seta o _numero a Numero
+        public int Numero { get; }
 
         private double _saldo = 100;
 
