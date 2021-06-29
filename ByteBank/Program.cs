@@ -48,10 +48,17 @@ namespace ByteBank
         }
         public static int Dividir(int numero, int divisor)
         {
-            ContaCorrente conta = null;
-            //Console.WriteLine(conta.Saldo);
+            try
+            {            
+                return numero / divisor;
+            }
+            catch (DivideByZeroException)
+            {
+                Console.WriteLine($"Exceção com número = {numero} e divisor = {divisor}");
+                // controle de fluxo
+                throw;
+            }
 
-            return numero / divisor;
         }
 
     }
