@@ -10,66 +10,47 @@ namespace ByteBank
     {
         static void Main(string[] args)
         {
-
-            int resultado = Metodo();
-
-            if(resultado == -2)
+            try
             {
-                Console.WriteLine("Ocorreu um erro!");
+                Metodo();
             }
+            catch (DivideByZeroException erro)
+            {
+                Console.WriteLine("Não é possível dividir por zero!");
+                Console.WriteLine(erro.Message);
+                Console.WriteLine(erro.StackTrace);
+            }
+            catch (Exception erro)
+            {
+                Console.WriteLine(erro.Message);
+                Console.WriteLine(erro.StackTrace);
+            }
+
+
 
             Console.ReadLine();
         }
 
-        public static int Metodo()
+        public static void Metodo()
         {
 
-            int resultadoDivisao1 = TestaDivisao(2);
-            int resultadoDivisao2 = TestaDivisao(0);
-            if (resultadoDivisao1 == -2)
-            {
-                return -2;
-            }
-            if (resultadoDivisao2 == -2)
-            {
-                return -2;
-            }
-            return 0;
-
+            TestaDivisao(0);
+            TestaDivisao(2);
         }
 
-        public static int TestaDivisao(int divisor)
+        public static void TestaDivisao(int divisor)
         {
 
             int resultado = Dividir(10, divisor);
+            Console.WriteLine($"Resultado da divisão de 10 por {divisor} é {resultado}");
 
-            if(resultado == -2)
-            {
-                return -2;
-            }
-            if(resultado == -1)
-            {
-                Console.WriteLine("Não é possível fazer divisão por 0");
-            }
-            else
-            {
-                Console.WriteLine($"Resultado da divisão de 10 por {divisor} é {resultado}");
-            }
 
-            return 0;
-            
         }
-        public static int  Dividir(int numero, int divisor)
+        public static int Dividir(int numero, int divisor)
         {
-            if(divisor == 0)
-            {
-                return -1;
-            }
+            ContaCorrente conta = null;
+            //Console.WriteLine(conta.Saldo);
 
-            if(divisor > numero)
-            {
-                return -2;
-            }
             return numero / divisor;
         }
 
