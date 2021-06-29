@@ -42,12 +42,13 @@ namespace ByteBank
         {
             if(agencia <= 0)
             {
-                throw new ArgumentException("O argumento agencia deve ser maiores que zero");
+                //nameof() : devolve como string o argumento -- obriga assim a mudar o nome da variavel caso ela seja modificada
+                throw new ArgumentException("O argumento agencia deve ser maiores que zero", nameof(agencia));
                
             }
             if (numero <= 0)
             {
-               throw new ArgumentException("O argumento numero deve ser maiores que zero");
+               throw new ArgumentException("O argumento numero deve ser maiores que zero", nameof(numero));
                 
             }
             Agencia = agencia;
