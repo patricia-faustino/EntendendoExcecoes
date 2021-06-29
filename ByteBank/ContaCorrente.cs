@@ -9,8 +9,6 @@ namespace ByteBank
 
         public static int TotalDeContasCriadas { get; private set; }
 
-
-        private int _agencia;
         public int Agencia { get; }
 
         //readonly: somente leitura, não pode ser atribuido fora do construtor
