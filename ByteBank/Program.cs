@@ -12,7 +12,13 @@ namespace ByteBank
         {
             try
             {
-                ContaCorrente conta = new ContaCorrente(540,0);
+                ContaCorrente conta = new ContaCorrente(540,54618);
+                ContaCorrente conta2 = new ContaCorrente(485, 45678);
+
+                conta2.Transferir(-10, conta);
+                conta.Depositar(50);
+                Console.WriteLine(conta.Saldo);
+                conta.Sacar(-500);  
 
             }
             catch(ArgumentException ex)
@@ -26,6 +32,13 @@ namespace ByteBank
             catch (DivideByZeroException ex)
             {
                 Console.WriteLine("Não é possível dividir por zero!");
+            }
+
+            catch (SaldoInsuficienteException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exceção do tipo SaldoInsuficienteException");
+              
             }
 
             catch (Exception ex)
