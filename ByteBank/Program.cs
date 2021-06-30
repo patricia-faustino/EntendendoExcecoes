@@ -12,47 +12,21 @@ namespace ByteBank
         {
             try
             {
-                ContaCorrente conta = new ContaCorrente(540,54618);
-                ContaCorrente conta2 = new ContaCorrente(485, 45678);
+                ContaCorrente conta1 = new ContaCorrente(4564, 789684);
+                ContaCorrente conta2 = new ContaCorrente(7891, 456794);
 
-                conta2.Transferir(100000, conta);
-                conta.Depositar(50);
-                Console.WriteLine(conta.Saldo);
-                conta.Sacar(-500);  
-
+                //conta1.Transferir(1000, conta2);
+                conta1.Sacar(1000);
             }
-            catch(ArgumentException ex)
+            catch(OperacaoFinanceiraException e)
             {
-                //deve ser colocado o ex.Message para trazer a mensagem do erro
-                Console.WriteLine($"Argumento com problema: {ex.ParamName}");
-                Console.WriteLine("Ocorreu uma exceção do tipo ArgumentException");
-                Console.WriteLine(ex.Message);
-            } 
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
 
-            catch (DivideByZeroException ex)
-            {
-                Console.WriteLine("Não é possível dividir por zero!");
+               /* Console.WriteLine("Informações da INNER EXCEPTION (EXCEÇÃO INTERNA): ");
+                Console.WriteLine(e.InnerException.Message);
+                Console.WriteLine(e.InnerException.StackTrace);*/
             }
-
-            catch (SaldoInsuficienteException ex)
-            {
-                Console.WriteLine(ex.Saldo);
-                Console.WriteLine(ex.ValorSaque);
-
-                Console.WriteLine(ex.StackTrace);
-
-                Console.WriteLine(ex.Message);
-                Console.WriteLine("Exceção do tipo SaldoInsuficienteException");
-              
-            }
-
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
-            }
-
-
 
             Console.ReadLine();
         }
