@@ -13,6 +13,10 @@ namespace ByteBank
 
         public int Agencia { get; }
 
+        public int ContadorDeSaquesNaoPermitidos { get; private set; }
+
+        public int ContadorDeTransferenciasNaoPermitidos { get; private set; }
+
         //readonly: somente leitura, não pode ser atribuido fora do construtor
         //private readonly int _numero;
         // por baixo dos panos ele seta o _numero a Numero
@@ -70,6 +74,7 @@ namespace ByteBank
 
             if (_saldo < valor)
             {
+                ContadorDeSaquesNaoPermitidos++;
                 throw new SaldoInsuficienteException(Saldo, valor);
             }
 
@@ -95,7 +100,18 @@ namespace ByteBank
 
             }
 
-            Sacar(valor);
+            try
+            {
+                Sacar(valor);
+            }
+            catch (SaldoInsuficienteException ex)
+            {
+                ContadorDeTransferenciasNaoPermitidos++;
+
+                //mantém o caminho do StackTrace correto
+                throw new OperacaoFinanceiraException("Operação não realizada", ex);
+            }
+
             contaDestino.Depositar(valor);
 
         }
